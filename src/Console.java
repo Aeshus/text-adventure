@@ -13,13 +13,14 @@ public class Console extends JFrame {
     private JTextArea textArea;
     private String consoleText;
     private JLabel consoleImage;
+    final private Scanner stdin;
 
     private final PipedInputStream inPipe = new PipedInputStream();
     private final PipedInputStream outPipe = new PipedInputStream();
 
     PrintWriter inWriter;
 
-    Console(String title, int width, int height) {
+    Console(String title) {
         // Set the title of the JFrame to input title
         super(title);
 
@@ -30,7 +31,7 @@ public class Console extends JFrame {
         initializeStreams();
 
         // Create the GUI elements
-        buildGui(width, height);
+        buildGui();
 
         // Edit key-binds for console use
         initializeKeys();
@@ -40,6 +41,9 @@ public class Console extends JFrame {
 
         // Manages writing new scanner inputs to the console
         initializeSwingWorker();
+
+        // Initialize Scanner
+        stdin = new Scanner(System.in);
 
         // Disable editing it (re-enabled for user input)
         textArea.setEditable(false);
@@ -102,11 +106,12 @@ public class Console extends JFrame {
         int currLength = textArea.getText().length();
         int oldLength = consoleText.length();
 
+        // Stop it from doing its normal thing
         event.consume();
 
         // If the current length is different from the original, steal everything new
         if (currLength > oldLength) {
-            inWriter.println(textArea.getText().substring(oldLength, currLength));
+          inWriter.println(textArea.getText().substring(oldLength, currLength));
         }
 
         // If the current length is less than or equal to the original length, it's failed
@@ -123,6 +128,7 @@ public class Console extends JFrame {
         textArea.addKeyListener(new KeyListener() {
             @Override
             public void keyPressed(KeyEvent event){
+                // Parse input and send it to it's right handler functions
                 switch (event.getKeyCode()) {
                     case KeyEvent.VK_BACK_SPACE -> handleBackspace(event);
                     case KeyEvent.VK_ENTER -> handleEnter(event);
@@ -144,7 +150,6 @@ public class Console extends JFrame {
         int currLength = textArea.getText().length();
         int oldLength = consoleText.length();
 
-
         // If there's been deleted content, set the text to the original
         if (currLength <= oldLength) {
             // Stops it from executing the backspace event code
@@ -155,7 +160,7 @@ public class Console extends JFrame {
         }
     }
 
-    private void buildGui(int width, int height) {
+    private void buildGui() {
         // Create the parent element
         JPanel panel = new JPanel(new BorderLayout());
 
@@ -183,8 +188,8 @@ public class Console extends JFrame {
         // Enable the global element.
         setVisible(true);
 
-        // Set the size of the global element
-        setSize(width, height);
+        // Set the size of the global element to the largest one & make a square.
+        setSize(800,800);
     }
 
     private void initializeStreams() {
@@ -231,5 +236,12 @@ public class Console extends JFrame {
         consoleImage.setIcon(image);
 
         return null;
+    }
+
+    public String getInput() {
+        textArea.setEditable(true);
+        String str = stdin.nextLine();
+        textArea.setEditable(false);
+        return str;
     }
 }
