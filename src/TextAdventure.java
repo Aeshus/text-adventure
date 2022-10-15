@@ -278,6 +278,32 @@ public class TextAdventure {
     console.setImage("./assets/pumpkintrio.jpg");
   }
 
+  // Corn Region
+  @SuppressWarnings("unused")
+  private void region6() {
+    console.setImage("./assets/corn.jpg");
+
+    // Mr Scarecrow Man
+  }
+
+  // Desert Region
+  @SuppressWarnings("unused")
+  private void region7() {
+    console.setImage("./assets/desert.jpg");
+  }
+
+  // Beach Region
+  @SuppressWarnings("unused")
+  private void region8() {
+    console.setImage("./assets/beach.jpg");
+  }
+
+  // Sky Region
+  @SuppressWarnings("unused")
+  private void region9() {
+    console.setImage("./assets/sky.jpg");
+  }
+
   public void play() {
     tutorial();
 
