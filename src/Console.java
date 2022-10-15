@@ -238,8 +238,6 @@ public class Console extends JFrame {
 
     // Set the icon of the console image to the image
     consoleImage.setIcon(image);
-
-    return;
   }
 
   public String getInput() {
@@ -247,5 +245,13 @@ public class Console extends JFrame {
     String str = stdin.nextLine();
     textArea.setEditable(false);
     return str;
+  }
+
+  public JTextArea getTextArea() {
+    return textArea;
+  }
+
+  public void closeScanner() {
+    stdin.close();
   }
 }
