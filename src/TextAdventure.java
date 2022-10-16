@@ -54,7 +54,7 @@ public class TextAdventure {
 
         hero.changeLives(-1);
 
-        if (hero.getLives() == 0) {
+        if (hero.isDead()) {
           System.out.println("The bear charges you, eating your head");
           System.out.println("You died");
           endGame();
@@ -80,7 +80,7 @@ public class TextAdventure {
             System.out.println("The bear looks super not happy with you");
 
             hero.changeLives(-1);
-            if (hero.getLives() == 0) {
+            if (hero.isDead()) {
               System.out.println("He crane-kicks you and turns you into a eunuch");
               System.out.println("Just the thought of it makes you fall over and die");
               endGame();
@@ -106,7 +106,7 @@ public class TextAdventure {
             System.out.println("Who could've expected this...");
             hero.changeLives(-1);
 
-            if (hero.getLives() == 0) {
+            if (hero.isDead()) {
               System.out.println("It just happened that this time, you never woke up :)");
               endGame();
             }
@@ -143,7 +143,7 @@ public class TextAdventure {
         System.out.println("You end up running straight into his world-famous bear-hug!");
 
         hero.changeLives(-1);
-        if (hero.getLives() == 0) {
+        if (hero.isDead()) {
           System.out.println("You get crushed by his weight and die");
           endGame();
         }
@@ -171,7 +171,7 @@ public class TextAdventure {
           System.out.println("The bear blocked you jab!");
 
           hero.changeLives(-1);
-          if (hero.getLives() == 0) {
+          if (hero.isDead()) {
             System.out.println("It rips off your arm :)");
             endGame();
           }
@@ -182,7 +182,7 @@ public class TextAdventure {
           System.out.println("The bear parried your absolute buffoonery");
 
           hero.changeLives(-1);
-          if (hero.getLives() == 0) {
+          if (hero.isDead()) {
             System.out.println("As a result, you're so disapointed in yourself that you fall over and die :)");
             endGame();
           } else {
@@ -203,7 +203,7 @@ public class TextAdventure {
           System.out.println("But all it seemed to do was piss it off...");
 
           hero.changeLives(-1);
-          if (hero.getLives() == 0) {
+          if (hero.isDead()) {
             System.out.println("The bear then mauls you...");
             endGame();
           }
@@ -223,7 +223,7 @@ public class TextAdventure {
           System.out.println("You bite the bear and shocker -- it bit you back...");
 
           hero.changeLives(-1);
-          if (hero.getLives() == 0) {
+          if (hero.isDead()) {
             System.out.println("You eventually bleed out of the big chunk of your body missing...");
             endGame();
           }
@@ -309,7 +309,7 @@ public class TextAdventure {
                 System.out.println("You try to punch the mimic but it grabs onto your arm and pulls you in!");
 
                 hero.changeLives(-1);
-                if (hero.getLives() == 0) {
+                if (hero.isDead()) {
                   System.out.println("The mimic then chops your body to pieces and eats you alive :)");
                   System.out.println("A pretty gruesome death");
 
@@ -326,7 +326,7 @@ public class TextAdventure {
                 System.out.println("As you try to run away, you trip on a grave");
 
                 hero.changeLives(-1);
-                if (hero.getLives() == 0) {
+                if (hero.isDead()) {
                   System.out.println("In the process of tripping over the grave, you awaken the zombie underneath");
                   System.out.println("It grabs you and pulls you down");
 
@@ -344,7 +344,7 @@ public class TextAdventure {
           System.out.println("You make such a racket that some skeleton guy came outside");
 
           hero.changeLives(-1);
-          if (hero.getLives() == 0) {
+          if (hero.isDead()) {
             System.out.println("The skeleton guy punches you hard across the head, killing you instantly.");
 
             endGame();
@@ -398,7 +398,7 @@ public class TextAdventure {
                 System.out.println("The Skeleton wishes to take his reward for beating you...");
 
                 hero.changeLives(-1);
-                if (hero.getLives() == 0) {
+                if (hero.isDead()) {
                   System.out.println("The Skeleton clubs you across the head and drags you dead body to do... Stuff");
 
                   endGame();
@@ -420,7 +420,7 @@ public class TextAdventure {
             System.out.println("As a result, he attacks you :)");
 
             hero.changeLives(-1);
-            if (hero.getLives() == 0) {
+            if (hero.isDead()) {
               System.out.println("He socks you in the gut and you die");
               System.out.println("Pretty sad tbh");
 
@@ -441,7 +441,7 @@ public class TextAdventure {
       } else {
         System.out.println("And you notice the gate is locked... What do we do now...");
 
-        choice = hero.matchInput(new String[]{"Lockpick", "Enter"});
+        choice = hero.matchInput(new String[]{"Lockpick", "Jump Fence"});
 
         if (choice.equals("Lockpick")) {
           System.out.println("Fun lockpick minigame time!11!1!");
@@ -464,13 +464,28 @@ public class TextAdventure {
             System.out.println("Might as well jump the fence...");
 
             hero.changeLives(-1);
-            if (hero.getLives() == 0) {
+            if (hero.isDead()) {
               System.out.println("You manage to somehow impale yourself against the fence...");
               endGame();
             }
 
             System.out.println("You jump the fence and hit some thorn bushes on the outside...");
             System.out.println("You ask yourself why they put them there but hey... Stops people like you...");
+          }
+        } else {
+
+          if (!((int)(Math.random() * 3) == 0)) {
+            hero.changeLives(-1);
+            if (hero.isDead()) {
+              System.out.println("You manage to somehow impale yourself against the fence...");
+              endGame();
+            }
+
+            System.out.println("You jump the fence and hit some thorn bushes on the outside...");
+            System.out.println("You ask yourself why they put them there but hey... Stops people like you...");
+          } else {
+            System.out.println("You manage to jump the fence successfully");
+            System.out.println("Probably would've been safer to lockpick though...");
           }
         }
       }

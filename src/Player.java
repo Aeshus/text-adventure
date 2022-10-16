@@ -34,6 +34,10 @@ public class Player {
     return str;
   }
 
+  public boolean isDead() {
+    return (getLives() == 0);
+  }
+
   public int nextInt() {
     while (true) {
       System.out.println("\n" + name.toUpperCase() + " (int): ");
