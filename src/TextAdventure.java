@@ -890,6 +890,7 @@ public class TextAdventure {
     regions++;
   }
 
+  /*
   // Mountain Region
   @SuppressWarnings("unused")
   private void region6() {
@@ -921,6 +922,7 @@ public class TextAdventure {
 
     // Seagull
   }
+   */
 
   public void play() {
     tutorial();
