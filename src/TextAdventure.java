@@ -496,7 +496,7 @@ public class TextAdventure {
 
   // Mountain Region
   @SuppressWarnings("unused")
-  private void region2() {
+  private void region6() {
     console.setImage("./assets/mountains.jpg");
 
     // Idk
@@ -504,7 +504,7 @@ public class TextAdventure {
 
   // Ocean Region
   @SuppressWarnings("unused")
-  private void region3() {
+  private void region7() {
     console.setImage("./assets/ocean.jpg");
 
     // Fishing, Boat, Kraken
@@ -512,7 +512,7 @@ public class TextAdventure {
 
   // Forest Region
   @SuppressWarnings("unused")
-  private void region4() {
+  private void region8() {
     console.setImage("./assets/forest.jpg");
 
     // Forest?
@@ -520,7 +520,7 @@ public class TextAdventure {
 
   // Pumpkin Region
   @SuppressWarnings("unused")
-  private void region5() {
+  private void region2() {
     console.setImage("./assets/pumpkintrio.jpg");
 
     System.out.println("You find yourself in a pumpkin patch!");
@@ -593,7 +593,7 @@ public class TextAdventure {
 
   // Corn Region
   @SuppressWarnings("unused")
-  private void region6() {
+  private void region3() {
     console.setImage("./assets/corn.jpg");
 
     System.out.println("You find yourself in large corn field");
@@ -773,7 +773,7 @@ public class TextAdventure {
 
   // Desert Region
   @SuppressWarnings("unused")
-  private void region7() {
+  private void region4() {
     console.setImage("./assets/desert.jpg");
     // Make them walk for a long time :)
 
@@ -835,7 +835,7 @@ public class TextAdventure {
 
   // Beach Region
   @SuppressWarnings("unused")
-  private void region8() {
+  private void region9() {
     console.setImage("./assets/beach.jpg");
 
     // Seagull
@@ -843,7 +843,7 @@ public class TextAdventure {
 
   // Sky Region
   @SuppressWarnings("unused")
-  private void region9() {
+  private void region5() {
     console.setImage("./assets/sky.jpg");
 
     System.out.println("You find your self in... The Sky?");
@@ -927,10 +927,8 @@ public class TextAdventure {
 
       while (true) {
         continueJourney();
-        region6();
+        nextRegion();
       }
-
-    // nextRegion();
   }
 
   private void continueJourney() {
