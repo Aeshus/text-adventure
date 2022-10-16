@@ -609,7 +609,80 @@ public class TextAdventure {
   private void region9() {
     console.setImage("./assets/sky.jpg");
 
+    System.out.println("You find your self in... The Sky?");
+    System.out.println("You probably died already, so now you're on the quest to Detroit: Become Human:tm:");
+
+    System.out.println("\nYou are approached by an Angel");
+
+    System.out.println("ANGEL: Hey kid, are you good at math?");
+
+    boolean boolchoice = hero.nextBool();
+
+    if (boolchoice) {
+      System.out.println("Great!");
+
+      int first;
+      int second;
+
+      while(true) {
+        first = (int)(Math.random()*100);
+        second = (int)(Math.random()*100);
+
+        System.out.println("\nSolve this simple equation for me:");
+        System.out.println(first +" + "+ second + " = ?");
+        if (hero.nextInt() == (first + second)) {
+          System.out.println((first+second) +" is correct!");
+
+          if (((int) (Math.random() * 5)) == 0) {
+            System.out.println("That is all; thanks!");
+            break;
+          } else if (((int) (Math.random() * 20)) == 0) {
+            System.out.println("Really great job!");
+            System.out.println("Here is your reward:");
+            hero.changeLives(1);
+            break;
+          }
+        } else {
+          System.out.println("Bro you got it wrong...");
+          System.out.println("Did you lie to me??1?!?/?!//?");
+
+          hero.changeLives(-1);
+          if (hero.isDead()) {
+            System.out.println("The Angel then thanos-snaps you out of existance of your crimes");
+            endGame();
+          }
+
+          System.out.println("The Angel, in anger, throws you back to earth");
+          System.out.println("Maybe you shouldn't lie about your skills, smh");
+          break;
+        }
+      }
+    } else {
+      System.out.println("Bruh man...");
+      System.out.println("I didn't expect kindergarteners to play this game...");
+      System.out.println("Just... Get out of here then");
+
+      if ((int)(Math.random()*4) == 0) {
+        System.out.println("The Angel shoves you out of the sky and you come crashing down to the ground");
+
+        hero.changeLives(-1);
+        if (hero.isDead()) {
+          System.out.println("You go splat on the ground");
+          System.out.println("A seagull is happily slurping up your body :)");
+
+          endGame();
+        }
+
+        System.out.println("You manage to not die and instead breaks a few bones");
+        System.out.println("Idk how you even got up there...");
+        System.out.println("Let alone how you thought you'd get down");
+      } else {
+        System.out.println("The Angel teleports you down like woosh and now you're not there anymore!");
+      }
+    }
+
     // Angel
+    regions++;
   }
 
   public void play() {
@@ -617,7 +690,7 @@ public class TextAdventure {
 
       while (true) {
         continueJourney();
-        region1();
+        region9();
       }
 
     // nextRegion();
