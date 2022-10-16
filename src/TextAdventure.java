@@ -948,7 +948,7 @@ public class TextAdventure {
         System.out.println("I'm surprised you haven't gotten killed by the RNG yet...");
         System.out.println("Maybe I should change the odds a bit... ;)");
       } else if (regions <= 5) {
-        System.out.println("Wow, you managed to do 1/2 of it");
+        System.out.println("Wow, you managed to do most of it");
         System.out.println("That's an achievement if I've ever seen one");
       } else if (regions <= 10) {
         System.out.println("DANG!!!");
