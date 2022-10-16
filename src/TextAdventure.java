@@ -258,24 +258,32 @@ public class TextAdventure {
   @SuppressWarnings("unused")
   private void region2() {
     console.setImage("./assets/mountains.jpg");
+
+    // Idk
   }
 
   // Ocean Region
   @SuppressWarnings("unused")
   private void region3() {
     console.setImage("./assets/ocean.jpg");
+
+    // Fishing, Boat, Kraken
   }
 
   // Forest Region
   @SuppressWarnings("unused")
   private void region4() {
     console.setImage("./assets/forest.jpg");
+
+    // Forest?
   }
 
   // Pumpkin Region
   @SuppressWarnings("unused")
   private void region5() {
     console.setImage("./assets/pumpkintrio.jpg");
+
+    // 3 pumpkins :0
   }
 
   // Corn Region
@@ -290,18 +298,78 @@ public class TextAdventure {
   @SuppressWarnings("unused")
   private void region7() {
     console.setImage("./assets/desert.jpg");
+    // Make them walk for a long time :)
+
+    while(true) {
+      String choice = hero.matchInput(new String[]{"Stop", "Walk"});
+      if (choice.equals("Stop")) {
+        System.out.println("You give up on finding the elderado.");
+        System.out.println("I expected great things from you...");
+        break;
+      } else if (choice.equals("Walk")) {
+        if ((int)(Math.random()*5) == 0) {
+          System.out.println("You found an oasis!");
+          System.out.println("It's waters are glistening in the sun and there are palm trees abound");
+          System.out.println("We're just gonna ignore the fact that there's no animals or anything else nearby...");
+
+          choice = hero.matchInput(new String[]{"Drink", "Abstain"});
+
+          if (choice.equals("Drink") && ((int)(Math.random() * 3) == 0)) {
+            System.out.println("You go down to the oasis for a drink...");
+            System.out.println("It turns out it's the spring of life!");
+            System.out.println("What a great boon!");
+
+            hero.changeLives(2);
+          } else if (choice.equals("Abstain") && ((int)(Math.random() * 2) == 0)) {
+            System.out.println("You correctly abstain from drinking the water");
+            System.out.println("The water was actually just an illusion...");
+            System.out.println("You decide to just leave");
+
+            hero.changeLives(1);
+          } else {
+            if (choice.equals("Drink")) {
+              System.out.println("You drink the water, and it turned out to be contaminated");
+              System.out.println("Who could've expected that a person who's only drunk sterilized isn't compatable with random spring water?");
+              System.out.println("You should really make better life choices...");
+
+              hero.changeLives(-1);
+            } else {
+              System.out.println("You choose to not drink your only source of water...");
+              System.out.println("You are forced to return as you're super parched");
+
+              hero.changeLives(-1);
+            }
+          }
+
+          break;
+        }
+
+        System.out.println("More desert... Just more desert...");
+        System.out.println("I don't know what you expected to find out here...");
+
+        if ((int)(Math.random() * 3) == 0) {
+          System.out.println("Hint: maybe keep walking?");
+        }
+      }
+    }
+
+    regions++;
   }
 
   // Beach Region
   @SuppressWarnings("unused")
   private void region8() {
     console.setImage("./assets/beach.jpg");
+
+    // Seagull
   }
 
   // Sky Region
   @SuppressWarnings("unused")
   private void region9() {
     console.setImage("./assets/sky.jpg");
+
+    // Angel
   }
 
   public void play() {
@@ -309,7 +377,7 @@ public class TextAdventure {
 
       while (true) {
         continueJourney();
-        region0();
+        region7();
       }
 
     // nextRegion();
