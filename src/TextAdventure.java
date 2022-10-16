@@ -252,6 +252,231 @@ public class TextAdventure {
   @SuppressWarnings("unused")
   private void region1() {
     console.setImage("./assets/graveyard.jpg");
+
+    System.out.println("You walk into this magnificent graveyard");
+    System.out.println("You can tell it's a graveyard because of the graves :)");
+
+    System.out.println("\nOn the topic of graves, would you like to go in?");
+
+    String choice = hero.matchInput(new String[]{"Leave", "Enter"});
+
+    if (choice.equals("Enter")) {
+      System.out.println("You go further into the graveyard...");
+      System.out.println("You see a large house in the middle of the graveyard (as one does)...");
+      System.out.println("Where would you like to explore?");
+
+      choice = hero.matchInput(new String[]{"Inside", "Outside"});
+
+      if (choice.equals("Inside")) {
+        System.out.println("You choose to explore inside the epic house!");
+        System.out.println("You notice the door is locked, so you must lockpick it.");
+
+        System.out.println("To lockpick the door:");
+        System.out.println("- There's a random number, 1 through 10");
+        System.out.println("- You have to guess within 1 number of the rng");
+        System.out.println("Good luck!");
+
+        int intchoice = hero.nextInt();
+        int computer = (int)(Math.random()*10);
+
+        if (intchoice > (computer - 1) && intchoice < (computer + 1)) {
+          System.out.println("You successfully open the door and get in unnoticed");
+          System.out.println("Looking inside, there's just some chest.");
+
+          if ((int)(Math.random() * 3) == 0) {
+            System.out.println("It might be a mimic :)");
+          }
+
+          if ((int)(Math.random() * 3) == 0) {
+            System.out.println("You open the chest and find the Necronomicon!");
+            System.out.println("You have no idea how to use it but at least you can now summon Spooky Scary Skeletons");
+            hero.changeLives(1);
+          } else {
+            System.out.println("You open the chest and it turns out to be a mimic!");
+
+            choice = hero.matchInput(new String[]{"Fight", "Run"});
+
+            if (choice.equals("Fight")) {
+              System.out.println("You decide to fight the Mimic!");
+
+              if ((int)(Math.random()*3) == 0) {
+                System.out.println("You punch the mimic in it's mouth and it dies");
+                System.out.println("As it dies, it pukes up an item!");
+                System.out.println("It's some weird potion!");
+
+                hero.changeLives(1);
+              } else {
+                System.out.println("You try to punch the mimic but it grabs onto your arm and pulls you in!");
+
+                hero.changeLives(-1);
+                if (hero.getLives() == 0) {
+                  System.out.println("The mimic then chops your body to pieces and eats you alive :)");
+                  System.out.println("A pretty gruesome death");
+
+                  endGame();
+                }
+
+                System.out.println("You start flailing around and manage to dislodge yourself");
+                System.out.println("You then run away like a baby :/");
+              }
+            } else {
+              System.out.println("You try to run away!");
+
+              if ((int)(Math.random()*4) == 0) {
+                System.out.println("As you try to run away, you trip on a grave");
+
+                hero.changeLives(-1);
+                if (hero.getLives() == 0) {
+                  System.out.println("In the process of tripping over the grave, you awaken the zombie underneath");
+                  System.out.println("It grabs you and pulls you down");
+
+                  endGame();
+                }
+
+                System.out.println("You only take minor blunt trauma damage, and keep fleeing anyways");
+              }
+
+              System.out.println("You manage to successfully flee");
+            }
+          }
+        } else {
+          System.out.println("Oh no! You got it wrong!");
+          System.out.println("You make such a racket that some skeleton guy came outside");
+
+          hero.changeLives(-1);
+          if (hero.getLives() == 0) {
+            System.out.println("The skeleton guy punches you hard across the head, killing you instantly.");
+
+            endGame();
+          }
+
+          System.out.println("He just bonks you on the head and you pass out");
+        }
+      } else {
+        System.out.println("As you explore outside, you come across this skeleton man");
+        System.out.println("He asks you if you want to play rock-paper-scissors");
+
+        boolean boolchoice = hero.nextBool();
+
+        if (boolchoice) {
+          System.out.println("Rules for the game:");
+          System.out.println("- Best of 3");
+          System.out.println("- Its just rock paper scissors");
+
+          int player = 0;
+          int enemy = 0;
+
+          while(true) {
+            int random = (int) (Math.random() * 3);
+            choice = hero.matchInput(new String[]{"Rock", "Paper", "Scissors"});
+
+            if ((choice.equals("Rock") && random == 3) || (choice.equals("Paper") && random == 1) || (choice.equals("Scissors") && random == 2)) {
+              System.out.println("You guessed correctly!");
+              player++;
+            } else {
+              System.out.println("You guessed incorrectly!");
+              enemy++;
+            }
+
+            if (player == 2) {
+              System.out.println("You won rock-paper-scissors!");
+
+              if (!((int)(Math.random()*4) == 0)) {
+                System.out.println("The Skeleton guy says good game and leaves");
+              } else {
+                System.out.println("The Skeleton guy says that you deserve a reward for being so good");
+                hero.changeLives(1);
+              }
+              break;
+            }
+
+            if (enemy == 2) {
+              System.out.println("You lost rock-paper-scissors! :P");
+              System.out.println("Skill issue");
+
+              if ((int)(Math.random()*2) == 0) {
+                System.out.println("The Skeleton wishes to take his reward for beating you...");
+
+                hero.changeLives(-1);
+                if (hero.getLives() == 0) {
+                  System.out.println("The Skeleton clubs you across the head and drags you dead body to do... Stuff");
+
+                  endGame();
+                }
+
+                System.out.println("The Skeleton rips off you funny-bone and takes it for his \"collection\"");
+              } else {
+                System.out.println("The Skeleton says good game and suspiciously walks away");
+                System.out.println("... Maybe he was cheating?");
+              }
+
+              break;
+            }
+          }
+        } else {
+          System.out.println("The skeleton seems somewhat displeased with you...");
+
+          if ((int)(Math.random()*4) == 0) {
+            System.out.println("As a result, he attacks you :)");
+
+            hero.changeLives(-1);
+            if (hero.getLives() == 0) {
+              System.out.println("He socks you in the gut and you die");
+              System.out.println("Pretty sad tbh");
+
+              endGame();
+            }
+
+            System.out.println("He punches you in your stomach, making you wince to the ground");
+            System.out.println("He walks away, moaning about kids these days");
+          }
+        }
+      }
+
+    } else {
+      System.out.println("You try to leave...");
+
+      if ((int)(Math.random()*3) == 0) {
+        System.out.println("You succeed at leaving... Wow... Such Adventure...");
+      } else {
+        System.out.println("And you notice the gate is locked... What do we do now...");
+
+        choice = hero.matchInput(new String[]{"Lockpick", "Enter"});
+
+        if (choice.equals("Lockpick")) {
+          System.out.println("Fun lockpick minigame time!11!1!");
+          System.out.println("There's a random number, 1 through 10");
+          System.out.println("You have to guess within a number of the rng");
+          System.out.println("Good luck!");
+
+          int intchoice = hero.nextInt();
+          int computer = (int)(Math.random()*10);
+
+          if (intchoice > (computer - 1) && intchoice < (computer + 1)) {
+            System.out.println("Great guess!");
+            System.out.println("You actually manage to escape!");
+            System.out.println("I'm disapointed that you didn't go inside but hey, at least you were able to play this terrible minigame!");
+
+            hero.changeLives(1);
+          } else {
+            System.out.println("Oh no! You got it wrong!");
+            System.out.println("The lock looks very displeased at you... Well...");
+            System.out.println("Might as well jump the fence...");
+
+            hero.changeLives(-1);
+            if (hero.getLives() == 0) {
+              System.out.println("You manage to somehow impale yourself against the fence...");
+              endGame();
+            }
+
+            System.out.println("You jump the fence and hit some thorn bushes on the outside...");
+            System.out.println("You ask yourself why they put them there but hey... Stops people like you...");
+          }
+        }
+      }
+    }
+
+    regions++;
   }
 
   // Mountain Region
@@ -377,7 +602,7 @@ public class TextAdventure {
 
       while (true) {
         continueJourney();
-        region7();
+        region1();
       }
 
     // nextRegion();
