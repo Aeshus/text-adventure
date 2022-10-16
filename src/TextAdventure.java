@@ -596,7 +596,179 @@ public class TextAdventure {
   private void region6() {
     console.setImage("./assets/corn.jpg");
 
-    // Mr Scarecrow Man
+    System.out.println("You find yourself in large corn field");
+    System.out.println("Sorta looks like a Maize Maze");
+
+    System.out.println("\nIn the middle of the cornfield is a scarecrow");
+    System.out.println("You choose to approach it");
+
+    System.out.println("\nThe Scarecrow calls out to you");
+    System.out.println("Hello fine traveler: Why are you here today?");
+
+    String choice = hero.matchInput(new String[]{"Eat", "Talk", "Die"});
+
+    if (choice.equals("Eat")) {
+      System.out.println("You start eating...");
+      System.out.println("You are like those obnoctious crows that the scarecrow is there to scare...");
+
+      if (!((int)(Math.random()*3) == 0)) {
+        System.out.println("The Scarecrow, which you thought couldn't move, suddenly pushed you over");
+        System.out.println("He seems extremly enraged after you ate his corn in front of hime");
+
+        System.out.println("\nSCARECROW: WHYYY!!! THESE ARE MY CHILDREN");
+
+        System.out.println("\nThe Scarecrow rushes you");
+
+        if ((int)(Math.random() * 2) == 0) {
+          System.out.println("He charges and shoves you to the ground");
+
+          hero.changeLives(-1);
+          if (hero.isDead()) {
+            System.out.println("The Scarecrow shoves you so hard into the ground that you die");
+            System.out.println("At least you're now fertilizer for the corn that you tried to kill");
+            endGame();
+          }
+
+          System.out.println("You pass out and wake up half-berried in the ground");
+          System.out.println("You manage to claw yourself out, but maybe take this as a lesson: don't mess with no scarecrow");
+        } else {
+          System.out.println("You sock the scarecrow and he runs away");
+          System.out.println("You get to eat all the corn :)");
+        }
+      } else {
+        System.out.println("The scarecrow doesn't seem to care that you're eating his corn");
+        System.out.println("Maybe he's just tired of obnoxious kids like you");
+
+        if ((int)(Math.random()*3) == 0) {
+          System.out.println("It turns out the corn is actually healing corn!");
+          System.out.println("You have great luck!");
+          hero.changeLives(1);
+        }
+
+        System.out.println("Nothing else really happens so you just up and leave");
+      }
+
+    } else if (choice.equals("Talk")) {
+      System.out.println("SCARECROW: What is that which you wish to talk about?");
+
+      choice = hero.matchInput(new String[]{"Corn", "Scare", "Crow"});
+
+      if (choice.equals("Corn")) {
+        System.out.println("SCARECROW: Ah yes, corn...");
+        System.out.println("SCARECROW: Do you want to have some?");
+
+        boolean boolchoice = hero.nextBool();
+
+        if (boolchoice) {
+          System.out.println("SCARECROW: Here's some magical healing corn");
+          System.out.println("You eat the corn.");
+
+          if ((int)(Math.random()*3) == 0) {
+            System.out.println("... And it turns out to heal you like he said!");
+
+            hero.changeLives(1);
+
+            System.out.println("SCARECROW: K now I gave you the corn, get out");
+          } else {
+            System.out.println("SCARECROW: HAHA YOU BELIEVED ME??");
+            System.out.println("SCARECROW: WHY WOULD I FEED YOU MY CHILDREN?");
+
+            hero.changeLives(-1);
+            if (hero.isDead()) {
+              System.out.println("You start clawing at your throat in pain");
+              System.out.println("SCARECROW: HAHAHA");
+
+              endGame();
+            }
+
+            System.out.println("You start choking and throw it all you");
+            System.out.println("You run away");
+          }
+        } else {
+          System.out.println("SCARECROW: I guess you just don't have the pallet for real food :/");
+          System.out.println("SCARECROW: Go on, get outa here");
+        }
+      } else if (choice.equals("Scare")) {
+        System.out.println("Wanna hear something scarry?");
+
+        try {
+          Thread.sleep((long)(Math.random()*5000 + 500));
+        } catch (Exception ignored) {}
+        System.out.println("Boo!");
+
+        if ((int)(Math.random()*3) == 0) {
+          System.out.println("He scares you and pops your eardrums");
+
+          hero.changeLives(-1);
+          if (hero.isDead()) {
+            System.out.println("You now deaf");
+            System.out.println("Idk you die");
+            endGame();
+          }
+
+          System.out.println("You see the scarecrow laugh but can't hear him");
+          System.out.println("You run away");
+        } else {
+          System.out.println("SCARECROW: Hahaha");
+          System.out.println("SCARECROW: Scared 'ya");
+        }
+      } else {
+        System.out.println("SCARECROW: Crows...?");
+        System.out.println("Yeah uh.. No");
+        System.out.println("I HATE CROWS");
+        System.out.println("ARE YOU A CROW?");
+
+        boolean boolchoice = hero.nextBool();
+
+        if (boolchoice) {
+          System.out.println("SCARECROW: OMG YOU'RE A CROW!?!?1/1!");
+          System.out.println("The scarecrow charges at you");
+
+          hero.changeLives(-1);
+          if (hero.isDead()) {
+            System.out.println("The Scarecrow punches you across the face and you die");
+            System.out.println("SCARECROW: No more crows :)");
+            endGame();
+          }
+
+          System.out.println("The scarecrow jumps and flops around, trying to make you run away");
+          System.out.println("You got scared like the crow you are and ran away");
+        } else {
+          System.out.println("SCARECROW: Oh thank god, you scared me there (haha good pun; thank you thank you)");
+          System.out.println("SCARECROW: You can go away now for causing me mental anguish");
+        }
+      }
+
+    } else {
+      System.out.println("Scarecrow: Why...?");
+
+      int random = (int)(Math.random() * 3);
+
+      if (random == 0) {
+        System.out.println("Well, if you want...");
+        System.out.println("I'm happy to oblidge");
+        System.out.println("The Scarecrow moves it's arms and picks you up by your neck");
+
+        hero.changeLives(-1);
+        if (hero.isDead()) {
+          System.out.println("He snaps it and drops you on the ground");
+          endGame();
+        }
+
+        System.out.println("He stangles you and you pass out");
+        System.out.println("When you wake up, the scarecrow is gone (spooky)");
+      } else if (random == 1) {
+        System.out.println("I do not condone such deprecating humor");
+        System.out.println("Here: take this");
+
+        hero.changeLives(1);
+      } else {
+        System.out.println("This isn't the time to be joking around");
+        System.out.println("Go away");
+      }
+    }
+
+    regions++;
   }
 
   // Desert Region
@@ -755,7 +927,7 @@ public class TextAdventure {
 
       while (true) {
         continueJourney();
-        region5();
+        region6();
       }
 
     // nextRegion();
