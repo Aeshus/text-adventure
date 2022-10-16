@@ -494,30 +494,6 @@ public class TextAdventure {
     regions++;
   }
 
-  // Mountain Region
-  @SuppressWarnings("unused")
-  private void region6() {
-    console.setImage("./assets/mountains.jpg");
-
-    // Idk
-  }
-
-  // Ocean Region
-  @SuppressWarnings("unused")
-  private void region7() {
-    console.setImage("./assets/ocean.jpg");
-
-    // Fishing, Boat, Kraken
-  }
-
-  // Forest Region
-  @SuppressWarnings("unused")
-  private void region8() {
-    console.setImage("./assets/forest.jpg");
-
-    // Forest?
-  }
-
   // Pumpkin Region
   @SuppressWarnings("unused")
   private void region2() {
@@ -833,14 +809,6 @@ public class TextAdventure {
     regions++;
   }
 
-  // Beach Region
-  @SuppressWarnings("unused")
-  private void region9() {
-    console.setImage("./assets/beach.jpg");
-
-    // Seagull
-  }
-
   // Sky Region
   @SuppressWarnings("unused")
   private void region5() {
@@ -920,6 +888,38 @@ public class TextAdventure {
 
     // Angel
     regions++;
+  }
+
+  // Mountain Region
+  @SuppressWarnings("unused")
+  private void region6() {
+    console.setImage("./assets/mountains.jpg");
+
+    // Idk
+  }
+
+  // Ocean Region
+  @SuppressWarnings("unused")
+  private void region7() {
+    console.setImage("./assets/ocean.jpg");
+
+    // Fishing, Boat, Kraken
+  }
+
+  // Forest Region
+  @SuppressWarnings("unused")
+  private void region8() {
+    console.setImage("./assets/forest.jpg");
+
+    // Forest?
+  }
+
+  // Beach Region
+  @SuppressWarnings("unused")
+  private void region9() {
+    console.setImage("./assets/beach.jpg");
+
+    // Seagull
   }
 
   public void play() {
