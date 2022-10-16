@@ -523,7 +523,72 @@ public class TextAdventure {
   private void region5() {
     console.setImage("./assets/pumpkintrio.jpg");
 
-    // 3 pumpkins :0
+    System.out.println("You find yourself in a pumpkin patch!");
+    System.out.println("In which there are 3 epic pumpkins -- The Pumpkin Trio!");
+    System.out.println("The three pumpkins call for you, so you come to them");
+
+    String choice = hero.matchInput(new String[]{"Talk", "Attack", "Run"});
+
+    if (choice.equals("Talk")) {
+      System.out.println("You go up to the pumpkin trio to talk");
+      System.out.println("They offer to give you their autograph :ooo");
+
+      boolean boolchoice = hero.nextBool();
+
+      if (boolchoice) {
+        System.out.println("You get their autograph and it's really epic");
+        hero.changeLives(1);
+        System.out.println("It revitalizes your failing marriage and now everything is good");
+      } else {
+        System.out.println("WHY DID YOU DECLINE THEIR AUTOGRAPH???");
+        System.out.println("ARE YOU STUPID OR SOMETHING???/");
+        System.out.println("GET OUT");
+      }
+    } else if (choice.equals("Attack")) {
+      System.out.println("WHAT IS WRONG WITH YOU????");
+      System.out.println("WHY ARE YOU ATTACKING THE PUMPKIN TRIO!!!?!?!?!?!?!");
+
+      if ((int)(Math.random() * 2) == 0) {
+        System.out.println("You sick monster run up and STEP ON THEM");
+        System.out.println("WHYYYYYYYY");
+        System.out.println("YOU SICK #### EVEN EAT THEM");
+        System.out.println("AAAAAAAAA");
+
+        hero.changeLives(1);
+      } else {
+        System.out.println("AAAAAAAA");
+        System.out.println("THE PUMPKIN TRIO GOES ON THE OFFENSIVE");
+
+        hero.changeLives(-1);
+        if (hero.isDead()) {
+          System.out.println("THEY JUMP AT YOUR AND TEAR YOU TO SHREADS");
+          System.out.println("YOU SHOULD NOT ATTACK THE PUMPKIN TRIO");
+          endGame();
+        }
+
+        System.out.println("THEY JUMP AT YOUR PRIVATES AND TURN YOU INTO A EUNICH");
+        System.out.println("THIS IS THE PRICE FOR YOUR SINS");
+      }
+    } else {
+      System.out.println("Bro... Why did you not do stuff with the pumpkin trio?");
+      System.out.println("They're like the most famous people in this game!");
+
+      if ((int)(Math.random()*3) == 0) {
+        System.out.println("You are forever cursed with the knowledge that you ran from the pumpkin trio...");
+
+        hero.changeLives(-1);
+        if (hero.isDead()) {
+          System.out.println("As a result, you die the second you turn away");
+          System.out.println("Maybe like... Don't be a loser?");
+
+          endGame();
+        }
+
+        System.out.println("You manage to run away but vow to never tell anyone of this event out of shame");
+      }
+    }
+
+    regions++;
   }
 
   // Corn Region
@@ -690,7 +755,7 @@ public class TextAdventure {
 
       while (true) {
         continueJourney();
-        region9();
+        region5();
       }
 
     // nextRegion();
