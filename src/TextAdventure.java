@@ -753,6 +753,9 @@ public class TextAdventure {
     console.setImage("./assets/desert.jpg");
     // Make them walk for a long time :)
 
+    System.out.println("You find yourself in an expansive desert");
+    System.out.println("The sky is blue and everything under the horizon is sand");
+
     while(true) {
       String choice = hero.matchInput(new String[]{"Stop", "Walk"});
       if (choice.equals("Stop")) {
