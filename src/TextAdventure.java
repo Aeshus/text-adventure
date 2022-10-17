@@ -996,7 +996,7 @@ public class TextAdventure {
 }
 
   private void tutorial() {
-    console.setImage("./assets/animals.jpg");
+    console.setImage("assets/mountains.jpg");
     System.out.println("Welcome adventurer!");
     System.out.println("What happens to be your name?");
     hero.setName(hero.nextLine());
