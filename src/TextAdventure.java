@@ -785,15 +785,28 @@ public class TextAdventure {
           } else {
             if (choice.equals("Drink")) {
               System.out.println("You drink the water, and it turned out to be contaminated");
-              System.out.println("Who could've expected that a person who's only drunk sterilized isn't compatable with random spring water?");
-              System.out.println("You should really make better life choices...");
 
               hero.changeLives(-1);
+              if (hero.isDead()) {
+                System.out.println("Who could've expected that a person who's only drunk sterilized water isn't compatable with random spring water?");
+                System.out.println("You should really make better life choices...");
+                endGame();
+              }
+
+              System.out.println("You'll probably get a parasite or two, but who cares :)");
+              System.out.println("You keep walking until you leave the desert");
+
             } else {
               System.out.println("You choose to not drink your only source of water...");
-              System.out.println("You are forced to return as you're super parched");
 
               hero.changeLives(-1);
+              if (hero.isDead()) {
+                System.out.println("So... You die of dehydration");
+                System.out.println("Apparently it's super painful :P");
+                endGame();
+              }
+
+              System.out.println("You are forced to return as you're super parched");
             }
           }
 
